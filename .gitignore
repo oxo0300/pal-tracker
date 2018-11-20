@@ -1,5 +1,8 @@
 build
 .gradle
 .idea
+.classpath
+.project
+.settings
 *.iml
 ci/variables.yml
