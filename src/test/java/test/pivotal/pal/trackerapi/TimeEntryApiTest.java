@@ -48,7 +48,8 @@ public class TimeEntryApiTest {
     }
 
     @Test
-    public void testList() throws Exception {
+    public void
+    testList() throws Exception {
         Long id = createTimeEntry();
 
 

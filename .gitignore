@@ -1,4 +1,4 @@
-build
+./build
 .gradle
 .idea
 .classpath
@@ -6,3 +6,6 @@ build
 .settings
 *.iml
 ci/variables.yml
+.vcode
+out
+gradle
