@@ -10,21 +10,16 @@ import java.util.Optional;
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     private List<TimeEntry> timeEntries;
     private Long id;
-    private Long timeEntryId;
 
     public InMemoryTimeEntryRepository(){
         timeEntries = new ArrayList<>();
         id = 1L;
-        timeEntryId = 1L;
     }
 
     @Override
     public TimeEntry create(TimeEntry timeEntry) {
         if(timeEntry.getId() > 0) {
-            timeEntry.setId(id);
-        }
-        if(timeEntry.getTimeEntryId() > 0) {
-            timeEntry.setTimeEntryId(timeEntryId++);
+            timeEntry.setId(id++);
         }
         timeEntries.add(timeEntry);
         return timeEntry;
@@ -73,8 +68,8 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
             if(timeEntry.getUserId() >= 0) {
                 timeEntry1.setUserId(timeEntry.getUserId());
             }
-            if(timeEntry.getTimeEntryId() >= 0) {
-                timeEntry1.setTimeEntryId(timeEntry.getTimeEntryId());
+            if(timeEntry.getId() >= 0) {
+                timeEntry1.setId(timeEntry.getId());
             }
             timeEntries.set(index, timeEntry1);
             return timeEntry1;
@@ -97,7 +92,6 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
 
         if(found) {
             timeEntries.remove(timeEntryData);
-            id++;
         }
         return timeEntryData;
     }
