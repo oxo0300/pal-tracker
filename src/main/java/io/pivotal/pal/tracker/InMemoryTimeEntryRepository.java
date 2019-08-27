@@ -46,16 +46,15 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     public TimeEntry update(long id, TimeEntry timeEntry) {
         TimeEntry timeEntry1 = null;
         Integer index = 0;
-        Boolean found = false;
+
         for(TimeEntry timeEntry2: timeEntries) {
             if(timeEntry2.getId() == id) {
-                found = true;
                 timeEntry1 = timeEntry2;
                 break;
             }
             index++;
         }
-        if(found) {
+        if(timeEntry1 != null) {
             if(timeEntry.getDate() != null) {
                 timeEntry1.setDate(timeEntry.getDate());
             }
@@ -67,9 +66,6 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
             }
             if(timeEntry.getUserId() >= 0) {
                 timeEntry1.setUserId(timeEntry.getUserId());
-            }
-            if(timeEntry.getId() >= 0) {
-                timeEntry1.setId(timeEntry.getId());
             }
             timeEntries.set(index, timeEntry1);
             return timeEntry1;
